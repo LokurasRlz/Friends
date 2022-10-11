@@ -4,7 +4,7 @@
 
 # Description
 
->  A Friend List Application where you can keep track of the data of your friends, but first you have to Sign In!
+>  A Friend List Application where you can keep track of the data of your friends, but first you have to Sign Up!
 
 ## Built With
 
@@ -12,7 +12,7 @@
 
 ## Live Demo
 
-[Deployed Page]
+[Deployed Page](https://friendslistapp9.herokuapp.com/)
 
 ## Live Video
 
