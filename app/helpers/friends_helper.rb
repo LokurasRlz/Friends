@@ -1,2 +1,2 @@
-module FriendsHelper
+module FriendsHelper # rubocop:todo Layout/EndOfLine
 end

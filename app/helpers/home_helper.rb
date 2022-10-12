@@ -1,2 +1,2 @@
-module HomeHelper
+module HomeHelper # rubocop:todo Layout/EndOfLine
 end

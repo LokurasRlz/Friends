@@ -1,10 +1,7 @@
 class HomeController < ApplicationController
-  def index
-  end
+  def index; end
 
-  def about 
-    @about_me = "My name is Matias Aguirre."
-    
+  def about
+    @about_me = 'My name is Matias Aguirre.'
   end
-  
 end
