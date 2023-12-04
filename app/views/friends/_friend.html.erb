@@ -1,3 +1,4 @@
+
 <div id="<%= dom_id friend %>">
 
 <div class="row align-items-md-stretch">
@@ -10,11 +11,14 @@
           <%= friend.twitter %>
           </p>
           <br/>
-          <%= link_to "Edit this friend", edit_friend_path(@friend), class:"btn btn-secondary" %> 
+          <% if user_signed_in? %>
+          <%= link_to "Edit this friend", edit_friend_path(@friend), class:"btn btn-secondary" %>
   <%= link_to "Back to friends", friends_path, class:"btn btn-secondary" %>
   <br/> <br/>
-  <%= button_to "Destroy this friend", @friend, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
-        
+          <%= button_to "Destroy this friend", @friend, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+
       </div>
 
 </div>
+
+<% end  %>
