@@ -8,7 +8,8 @@ class FriendsController < ApplicationController
   end
 
   # GET /friends/1 or /friends/1.json
-  def show; end
+  def show;
+  end
 
   # GET /friends/new
   def new
@@ -72,6 +73,6 @@ class FriendsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def friend_params
-    params.require(:friend).permit(:first_name, :last_name, :email, :phone, :twitter, :user_id)
+    params.require(:friend).permit(:first_name, :last_name, :email, :phone, :twitter, :user_id, :id_tool, :link_to_pdf, :precinto, :date_of_use, :date_due_to)
   end
 end
