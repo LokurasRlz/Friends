@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_04_225446) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_26_142455) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,6 +31,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_04_225446) do
     t.index ["user_id"], name: "index_friends_on_user_id"
   end
 
+  create_table "tools", force: :cascade do |t|
+    t.string "id_tool"
+    t.string "precinto"
+    t.date "date_of_use"
+    t.date "date_due_to"
+    t.string "link_to_pdf"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "clase"
+    t.integer "rosca"
+    t.index ["user_id"], name: "index_tools_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -39,8 +53,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_04_225446) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "tools", "users"
 end

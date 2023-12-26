@@ -1,0 +1,51 @@
+<p style="color: green"></p>
+
+<% if user_signed_in? %>
+
+  <table class="table table-striped table-bordered table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>ID Tool</th>
+        <th>Precinto</th>
+        <th>Fecha de Uso</th>
+        <th>Vencimiento</th>
+        <th>Inspeccion</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @tools.each do |tool| %>
+        <% if tool.user == current_user %>
+          <tr>
+            <td>
+              <%= link_to tool.id_tool, tool %>
+            </td>
+
+            <td><%= tool.precinto %></td>
+            <td><%= tool.date_of_use %></td>
+            <td><%= tool.date_due_to %></td>
+            <td>
+              <%= link_to 'Show', tool, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-info btn-sm" %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to "Agregar", new_tool_path, class: "btn btn-secondary" %>
+
+  <br/>
+  <br/>
+
+  <%= link_to "Volver", root_path, class: "btn btn-dark" %>
+
+<% else %>
+
+  <h1 class="mt-5 text-center">Hola! Por favor ingresar para poder editar</h1>
+
+<% end %>
+
+

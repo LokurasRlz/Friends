@@ -1,13 +1,13 @@
-<div id="<%= dom_id friend %>" class="container mt-5">
+<div id="<%= dom_id tool %>" class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-6">
       <div class="card h-100 text-bg-dark rounded-3">
         <div class="card-body">
-          <h2 class="card-title"><%= friend.first_name %></h2>
-          <h2 class="card-title"><%= friend.email %></h2>
+          <h2 class="card-title"><%= tool.id %></h2>
+          <h2 class="card-title"><%= tool.precinto %></h2>
           <p class="card-text">
-            <%= friend.phone %>  |
-            <%= friend.twitter %>
+            <%= tool.clase %>  |
+            <%= tool.rosca %>
           </p>
           <br/>
 
@@ -19,10 +19,10 @@
       
 
           <% if user_signed_in? %>
-            <%= link_to "Edit", edit_friend_path(@friend), class:"btn btn-secondary" %>
-            <%= link_to "Volver", friends_path, class:"btn btn-secondary" %>
+            <%= link_to "Edit", edit_tool_path(@tool), class:"btn btn-secondary" %>
+            <%= link_to "Volver", tools_path, class:"btn btn-secondary" %>
             <br/> <br/>
-            <%= button_to "Destroy", @friend, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+            <%= button_to "Destroy", @tool, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
           <% end %>
 
                   </div>

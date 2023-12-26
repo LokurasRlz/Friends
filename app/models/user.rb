@@ -4,5 +4,5 @@ class User < ApplicationRecord # rubocop:todo Layout/EndOfLine
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :friends
+  has_many :tools
 end
