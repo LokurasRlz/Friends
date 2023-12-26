@@ -16,12 +16,15 @@ admin = User.find_or_create_by(email: 'admin@speservicios.com') do |user|
 
 
   Tool.create!(
-	id_tool: 'T001',
-	precinto: 'P001',
-	date_of_use: nil,
-	date_due_to: nil,
-	link_to_pdf: 'https://example.com/pdf1',
-	clase: 'Sample Text',
-	rosca: 123,
+	id_tool: '103',
+	precinto: '1696547',
+	date_of_use: '18/10/2023',
+	date_due_to: '15/4/2024',
+	days_left: 111,
+	state: 'OK',
+	tipo: 'Reduccion',
+	pin: '3 1/2 Reg',
+	box: 'NC 26',
+	link_to_pdf: 'https://drive.google.com/file/d/1FbIEWR7Ml_G8hDTu5mNzRrRW5UVs00bF/view?usp=sharing',
 	user: admin
   )

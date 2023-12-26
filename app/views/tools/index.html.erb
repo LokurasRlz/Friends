@@ -9,6 +9,9 @@
         <th>Precinto</th>
         <th>Fecha de Uso</th>
         <th>Vencimiento</th>
+        <th>Tipo</th>
+        <th>Pin</th>
+        <th>Box</th>
         <th>Inspeccion</th>
       </tr>
     </thead>
@@ -24,6 +27,9 @@
             <td><%= tool.precinto %></td>
             <td><%= tool.date_of_use %></td>
             <td><%= tool.date_due_to %></td>
+            <td><%= tool.clase %></td>
+            <td><%= tool.pin %></td>
+            <td><%= tool.box %></td>
             <td>
               <%= link_to 'Show', tool, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-outline-info btn-sm" %>
             </td>
