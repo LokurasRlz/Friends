@@ -10,7 +10,7 @@ class Tool < ApplicationRecord
 	attribute :date_due_to, :string
 	attribute :days_left, :integer
 	attribute :state, :string
-	attribute :tipo, :string
+	attribute :clase, :string
 	attribute :pin, :string
 	attribute :box, :string
 	attribute :link_to_pdf, :string

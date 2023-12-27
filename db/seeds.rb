@@ -22,7 +22,7 @@ admin = User.find_or_create_by(email: 'admin@speservicios.com') do |user|
 	date_due_to: '15/4/2024',
 	days_left: 111,
 	state: 'OK',
-	tipo: 'Reduccion',
+	clase: 'Reduccion',
 	pin: '3 1/2 Reg',
 	box: 'NC 26',
 	link_to_pdf: 'https://drive.google.com/file/d/1FbIEWR7Ml_G8hDTu5mNzRrRW5UVs00bF/view?usp=sharing',

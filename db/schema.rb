@@ -14,23 +14,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_26_142455) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "friends", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "email"
-    t.string "phone"
-    t.string "twitter"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.string "id_tool"
-    t.string "precinto"
-    t.date "date_of_use"
-    t.date "date_due_to"
-    t.string "link_to_pdf"
-    t.index ["user_id"], name: "index_friends_on_user_id"
-  end
-
   create_table "tools", force: :cascade do |t|
     t.string "id_tool"
     t.string "precinto"
@@ -41,7 +24,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_26_142455) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "clase"
-    t.integer "rosca"
+    t.text "pin"
+    t.text "box"
     t.index ["user_id"], name: "index_tools_on_user_id"
   end
 
