@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_26_142455) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_26_133749) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,13 +19,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_26_142455) do
     t.string "precinto"
     t.date "date_of_use"
     t.date "date_due_to"
+    t.string "clase"
+    t.string "pin"
+    t.string "box"
     t.string "link_to_pdf"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "clase"
-    t.text "pin"
-    t.text "box"
     t.index ["user_id"], name: "index_tools_on_user_id"
   end
 
