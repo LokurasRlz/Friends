@@ -2,7 +2,6 @@
   <% if tool.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(tool.errors.count, "error") %> prohibited this tool from being saved:</h2>
-
       <ul>
         <% tool.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -11,28 +10,48 @@
     </div>
   <% end %>
 
-  <div class:"form-group">
-       <%= form.text_field :first_name, class:"form-control", placeholder:"ID" %>
-  </div> <br/>
+  <div class="form-group">
+  <%= form.text_field :clase, class: "form-control", placeholder: "Tipo de Herramienta" %>
+ </div>
+ <br/>
 
-  <div class:"form-group">
-       <%= form.text_field :email, class:"form-control", placeholder:"Precinto" %>
-  </div> <br/>
-
-  <div class:"form-group">
-        <%= form.text_field :phone, class:"form-control", placeholder:"Fecha de Uso" %>
-  </div> <br/>
-
-  <div class:"form-group">
-       <%= form.text_field :twitter, class:"form-control", placeholder:"Vencimiento" %>
-  </div>  <br/>
-
-  <div class:"form-group">
-       <%= form.number_field :user_id, id: :tool_user_id, class:"form-control", value: current_user.id, type: :hidden %>
+  <div class="form-group">
+    <%= form.text_field :id_tool, class: "form-control", placeholder: "ID" %>
   </div>
+  <br/>
 
-<br/>
+  <div class="form-group">
+    <%= form.text_field :precinto, class: "form-control", placeholder: "Precinto" %>
+  </div>
+  <br/>
+
+  <div class="form-group">
+    <%= form.date_field :date_of_use, class: "form-control", placeholder: "Fecha de Uso" %>
+  </div>
+  <br/>
+
+  <div class="form-group">
+  <%= form.text_field :pin, class: "form-control", placeholder: "Pin" %>
+  </div>
+  <br/>
+
+  <div class="form-group">
+  <%= form.text_field :box, class: "form-control", placeholder: "Box" %>
+ </div>
+ <br/>
+
+  <div class="form-group">
+    <%= form.text_field :link_to_pdf, class: "form-control", placeholder: "Link Inspeccion" %>
+  </div>
+  <br/>
+
+  <div class="form-group">
+    <%= form.number_field :user_id, id: :tool_user_id, class: "form-control", value: current_user.id, type: :hidden %>
+  </div>
+  <br/>
+
   <div>
-    <%= form.submit class:"btn btn-secondary" %>
+    <%= form.submit class: "btn btn-secondary" %>
   </div>
 <% end %>
+

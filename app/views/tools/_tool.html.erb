@@ -3,12 +3,14 @@
     <div class="col-md-6">
       <div class="card h-100 text-bg-dark rounded-3">
         <div class="card-body">
-          <h2 class="card-title"><%= tool.id_tool %></h2>
-          <h2 class="card-title"><%= tool.precinto %></h2>
-          <p class="card-text">
-            <%= tool.clase %>  |
-            <%= tool.pin %>
-            <%= tool.box %>
+          <h2 class="card-title text-primary"><%= tool.clase %></h2> <br/>
+          <h2 class="card-title">ID: <%= tool.id_tool %></h2>
+          <h2 class="card-title">Precinto: <%= tool.precinto %></h2> <br/>
+          <h4 class="card-text">
+            Pin: <%= tool.pin %> <br/>
+            Box: <%= tool.box %> <br/> <br/>
+            Fecha de Uso: <%= tool.date_of_use %> | Fecha de Vencimiento: <%= tool.date_due_to %> <br/>
+            Dias Faltantes: <%= tool.days_left %> <br/>
 
           </p>
           <br/>

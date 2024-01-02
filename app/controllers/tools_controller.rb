@@ -5,7 +5,11 @@ class ToolsController < ApplicationController
 
   # GET /tools or /tools.json
   def index
-    @tools = Tool.all
+    if params[:search]
+      @tools = Tool.where("id_tool LIKE ? OR precinto LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
+    else
+      @tools = Tool.all
+    end
   end
 
   # GET /tools/1 or /tools/1.json
