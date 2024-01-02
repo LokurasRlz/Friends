@@ -6,7 +6,8 @@ class ToolsController < ApplicationController
   # GET /tools or /tools.json
   def index
     if params[:search]
-      @tools = Tool.where("id_tool LIKE ? OR precinto LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
+      search_term = "%#{params[:search]}%"
+      @tools = Tool.where("id_tool ILIKE ? OR precinto ILIKE ? OR clase ILIKE ?", search_term, search_term, search_term)
     else
       @tools = Tool.all
     end
@@ -42,6 +43,9 @@ class ToolsController < ApplicationController
 
   # PATCH/PUT /tools/1 or /tools/1.json
   def update
+    # Ensure date_of_use is set to nil if it's an empty string
+    tool_params[:date_of_use] = nil if tool_params[:date_of_use].blank?
+  
     respond_to do |format|
       if @tool.update(tool_params)
         format.html { redirect_to tool_url(@tool), notice: 'Tool was successfully updated.' }
@@ -77,6 +81,8 @@ class ToolsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def tool_params
-    params.require(:tool).permit(:id_tool, :precinto, :date_of_use, :date_due_to, :link_to_pdf, :clase, :pin, :box)
+    # Ensure date_of_use is set to nil if it's an empty string
+    params.require(:tool).permit(:id_tool, :precinto, :link_to_pdf, :clase, :pin, :box)
+          .tap { |whitelisted| whitelisted[:date_of_use] = nil if whitelisted[:date_of_use].blank? }
   end
 end

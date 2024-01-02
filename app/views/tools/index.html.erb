@@ -5,8 +5,8 @@
   <%= form_tag(tools_path, method: :get, class: "form-inline mb-3") do %>
     <div class="form-group mr-2">
       <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search..." %>
-    </div>
-    <%= submit_tag "Search", class: "btn btn-outline-primary" %>
+    </div> </br>
+    <%= submit_tag "Search", class: "btn btn-outline-primary " %>
   <% end %>
 
   <table class="table table-striped table-bordered table-hover mt-3">

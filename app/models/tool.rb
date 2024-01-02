@@ -14,5 +14,12 @@ class Tool < ApplicationRecord
 	attribute :pin, :string
 	attribute :box, :string
 	attribute :link_to_pdf, :string
-  end
   
+	before_save :set_date_due_to
+  
+	private
+  
+	def set_date_due_to
+	  self.date_due_to = (Date.parse(date_of_use) + 6.months).strftime("%Y-%m-%d") if date_of_use.present?
+	end
+  end

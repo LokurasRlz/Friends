@@ -5,6 +5,7 @@ class CreateTools < ActiveRecord::Migration[7.0]
       t.string :precinto
       t.date :date_of_use
       t.date :date_due_to
+      t.string :days_left
       t.string :clase
       t.string :pin
       t.string :box

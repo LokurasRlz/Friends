@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_26_133749) do
     t.string "precinto"
     t.date "date_of_use"
     t.date "date_due_to"
+    t.string "days_left"
     t.string "clase"
     t.string "pin"
     t.string "box"
