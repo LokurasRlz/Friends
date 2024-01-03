@@ -72,9 +72,28 @@ class ToolsController < ApplicationController
 
   def reset_date_of_use
     @tool = Tool.find(params[:id])
-    @tool.update(date_of_use: nil)
-    redirect_to tool_path(@tool), notice: 'Fecha de Uso reseteada.'
+    @tool.update(date_of_use: nil, date_due_to: nil)
+
+    respond_to do |format|
+      format.html { redirect_to tool_url(@tool), notice: 'Date of use reset successfully.' }
+      format.json { render :show, status: :ok, location: @tool }
+    end
   end
+
+  def update_date_of_use
+    @tool = Tool.find(params[:id])
+    if params[:reset_date_of_use]
+      @tool.update(date_of_use: nil, date_due_to: nil)
+      redirect_to tool_url(@tool), notice: 'Date of use reset successfully.'
+    else
+      if @tool.can_update_date_of_use? && @tool.update(tool_params)
+        redirect_to tool_url(@tool), notice: 'Tool was successfully updated.'
+      else
+        # Handle update errors
+      end
+    end
+  end
+
 
   private
 

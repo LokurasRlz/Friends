@@ -20,8 +20,12 @@
              <%= form.date_field :date_of_use, class: "form-control" %>
              </div> <br/>
              <%= form.submit "Actualizar", class: "btn btn-primary" %>
-             
+              
              <% end %>
+
+             <div class="mt-3">
+             <%= button_to "Reset", update_date_of_use_tool_path(tool), method: :patch, params: { reset_date_of_use: true }, class: "btn btn-warning" %>
+           </div>
              
              
              <br/>
