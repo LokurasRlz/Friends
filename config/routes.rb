@@ -9,4 +9,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  resources :tools do
+    patch 'reset_date_of_use', on: :member
+  end
+ 
+
 end

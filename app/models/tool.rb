@@ -2,7 +2,7 @@
 
 class Tool < ApplicationRecord
 	belongs_to :user
-  
+	
 	# Add the attributes
 	attribute :id_tool, :string
 	attribute :precinto, :string
@@ -14,12 +14,22 @@ class Tool < ApplicationRecord
 	attribute :pin, :string
 	attribute :box, :string
 	attribute :link_to_pdf, :string
-  
-	before_save :set_date_due_to
+	
+	before_save :set_date_due_to 
+
+	def can_update_date_of_use?
+		true
+	  end
+	
+	  def update_date_of_use(new_date)
+		self.date_of_use = new_date
+		set_date_due_to
+		save
+	  end
   
 	private
   
 	def set_date_due_to
-		self.date_due_to = (Date.parse(date_of_use.to_s) + 6.months) if date_of_use.present?
-	  end
-end
+	  self.date_due_to = (date_of_use + 6.months) if date_of_use.present?
+	end
+  end

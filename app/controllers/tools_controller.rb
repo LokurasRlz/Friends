@@ -43,13 +43,11 @@ class ToolsController < ApplicationController
 
   # PATCH/PUT /tools/1 or /tools/1.json
   def update
-    # Ensure date_of_use is set to nil if it's an empty string
-    tool_params[:date_of_use] = nil if tool_params[:date_of_use].blank?
-  
     respond_to do |format|
-      if @tool.update(tool_params)
+      if @tool.can_update_date_of_use? && @tool.update(tool_params)
         format.html { redirect_to tool_url(@tool), notice: 'Tool was successfully updated.' }
         format.json { render :show, status: :ok, location: @tool }
+      
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @tool.errors, status: :unprocessable_entity }
@@ -70,6 +68,12 @@ class ToolsController < ApplicationController
   def correct_user
     @tool = current_user.tools.find_by(id: params[:id])
     redirect_to tools_path, notice: 'Not Authorized To Edit This Tool' if @tool.nil?
+  end
+
+  def reset_date_of_use
+    @tool = Tool.find(params[:id])
+    @tool.update(date_of_use: nil)
+    redirect_to tool_path(@tool), notice: 'Fecha de Uso reseteada.'
   end
 
   private

@@ -9,6 +9,24 @@
           <h4 class="card-text">
             Pin: <%= tool.pin %> <br/>
             Box: <%= tool.box %> <br/> <br/>
+            <div class="mt-3">
+
+            
+            
+             <%= form_with(model: tool, url: tool_path(tool), method: :patch, local: true, html: { class: "update-date-form" }) do |form| %>
+              <%= form.hidden_field :authenticity_token %>
+             <div class="form-group">
+             <%= form.label :date_of_use, "Actualizar Fecha de Uso:" %>
+             <%= form.date_field :date_of_use, class: "form-control" %>
+             </div> <br/>
+             <%= form.submit "Actualizar", class: "btn btn-primary" %>
+             
+             <% end %>
+             
+             
+             <br/>
+             
+            
             Fecha de Uso: <%= tool.date_of_use %> <br/>
             Fecha de Vencimiento: <%= tool.date_due_to %> <br/> 
            
@@ -18,8 +36,8 @@
 
           <!-- Link to Inspeccion -->
           <div class="mt-3">
-            <%= link_to "Inspeccion", 'https://drive.google.com/file/d/17c8w4RQqzhwNHNiLA7cIuQ20YXpkqRxZ/view?usp=sharing', target: "_blank", class: "btn btn-primary" %>
-          </div><br/>
+          <%= link_to "Inspeccion", tool.link_to_pdf, target: "_blank", class: "btn btn-primary" %>
+        </div><br/>
 
       
 
