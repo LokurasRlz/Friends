@@ -6,8 +6,8 @@ class Tool < ApplicationRecord
 	# Add the attributes
 	attribute :id_tool, :string
 	attribute :precinto, :string
-	attribute :date_of_use, :string
-	attribute :date_due_to, :string
+	attribute :date_of_use, :date
+	attribute :date_due_to, :date
 	attribute :days_left, :integer
 	attribute :state, :string
 	attribute :clase, :string
@@ -20,6 +20,6 @@ class Tool < ApplicationRecord
 	private
   
 	def set_date_due_to
-	  self.date_due_to = (Date.parse(date_of_use) + 6.months).strftime("%Y-%m-%d") if date_of_use.present?
-	end
-  end
+		self.date_due_to = (Date.parse(date_of_use.to_s) + 6.months) if date_of_use.present?
+	  end
+end

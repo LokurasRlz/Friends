@@ -82,7 +82,7 @@ class ToolsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def tool_params
     # Ensure date_of_use is set to nil if it's an empty string
-    params.require(:tool).permit(:id_tool, :precinto, :link_to_pdf, :clase, :pin, :box)
+    params.require(:tool).permit(:id_tool, :precinto, :link_to_pdf, :clase, :pin, :box , :date_of_use, :date_due_to, :days_left, :state)
           .tap { |whitelisted| whitelisted[:date_of_use] = nil if whitelisted[:date_of_use].blank? }
   end
 end

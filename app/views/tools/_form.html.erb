@@ -26,7 +26,8 @@
   <br/>
 
   <div class="form-group">
-  <%= form.date_field :date_of_use, class: "form-control", placeholder: "Fecha de Uso", value: tool.date_of_use.present? ? DateTime.parse(tool.date_of_use) : nil %>
+  <%= form.label :date_of_use, "Fecha de Uso" %>
+  <%= form.date_field :date_of_use, class: "form-control", placeholder: "Fecha de Uso", value: tool.date_of_use.try(:to_date) %>
   </div>
   <br/>
 
