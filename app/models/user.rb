@@ -5,4 +5,10 @@ class User < ApplicationRecord # rubocop:todo Layout/EndOfLine
          :recoverable, :rememberable, :validatable
 
   has_many :tools
+
+  def admin?
+    admin
+  end
+
+
 end

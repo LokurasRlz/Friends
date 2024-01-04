@@ -1,7 +1,7 @@
 class ToolsController < ApplicationController
-  before_action :set_tool, only: %i[show edit update destroy]
-  before_action :authenticate_user!, except: %i[index show]
-  before_action :correct_user, only: %i[edit update destroy]
+  before_action :set_tool, only: %i[show edit update destroy reset_date_of_use reset_date_of_use]
+  before_action :authenticate_user!, except: %i[show index update show reset_date_of_use update_date_of_use]
+ 
 
   # GET /tools or /tools.json
   def index
@@ -44,12 +44,11 @@ class ToolsController < ApplicationController
   # PATCH/PUT /tools/1 or /tools/1.json
   def update
     respond_to do |format|
-      if @tool.can_update_date_of_use? && @tool.update(tool_params)
+      if @tool.update(tool_params)
         format.html { redirect_to tool_url(@tool), notice: 'Tool was successfully updated.' }
         format.json { render :show, status: :ok, location: @tool }
-      
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { render :show, status: :unprocessable_entity }
         format.json { render json: @tool.errors, status: :unprocessable_entity }
       end
     end
@@ -92,7 +91,16 @@ class ToolsController < ApplicationController
         # Handle update errors
       end
     end
+  
+
+  def correct_user
+    @tool = Tool.find(params[:id])
+    unless current_user.admin? || @tool.user == current_user
+      redirect_to tools_path, notice: 'Not Authorized'
+    end
   end
+
+end
 
 
   private
