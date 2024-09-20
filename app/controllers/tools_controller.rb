@@ -13,6 +13,14 @@ class ToolsController < ApplicationController
     end
   end
 
+  def used_tools
+    # Fetch tools that have a date of use (i.e., tools that have been used)
+    @tools = Tool.where.not(date_of_use: nil)
+    
+    render :index  # Reuse the index view to display the filtered tools
+  end
+
+
   # GET /tools/1 or /tools/1.json
   def show
   end
@@ -99,6 +107,7 @@ class ToolsController < ApplicationController
       redirect_to tools_path, notice: 'Not Authorized'
     end
   end
+   
 
 end
 
@@ -107,6 +116,7 @@ end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_tool
+    byebug
     @tool = Tool.find(params[:id])
   end
 
