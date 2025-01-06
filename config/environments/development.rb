@@ -11,6 +11,9 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
+  # Show full error reports and enable caching.
+  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
   # Show full error reports.
   config.consider_all_requests_local = true
 
@@ -69,5 +72,5 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  
+
 end

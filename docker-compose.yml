@@ -10,18 +10,16 @@ services:
       - DATABASE_USERNAME=${DATABASE_USERNAME}
       - DATABASE_NAME=${DATABASE_NAME}
       - DATABASE_HOST=postgres
-
     ports:
-      - "3001:3000"
-
+      - "3002:3000"
     volumes:
       - .:/app
+      - gem-cache:/usr/local/bundle # Cache gems for faster builds
     networks:
       - matias-network
-    # depends_on:
-    #   - postgres
+    depends_on:
+      - postgres
     command: ["sh", "-c", "rm -f /app/tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"]
-    # This is needed to allow the rails server dont reboot with a debugger method attached
     stdin_open: true
     tty: true
   postgres:
@@ -35,9 +33,12 @@ services:
       - matias-network
     volumes:
       - db-data:/var/lib/postgresql/data
+    # ports:
+    #   - "5438:5432"
 
 volumes:
   db-data:
+  gem-cache:
 
 networks:
   matias-network:
