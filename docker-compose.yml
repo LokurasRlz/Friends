@@ -17,8 +17,7 @@ services:
       - gem-cache:/usr/local/bundle # Cache gems for faster builds
     networks:
       - matias-network
-    depends_on:
-      - postgres
+
     command: ["sh", "-c", "rm -f /app/tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"]
     stdin_open: true
     tty: true
